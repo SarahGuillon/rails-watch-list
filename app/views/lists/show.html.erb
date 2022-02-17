@@ -2,6 +2,12 @@
 
 <ul>
   <% @bookmarks.each do |bookmark| %>
-    <li> <%= link_to "#{bookmark.movie.title} => #{bookmark.comment}", list_path(@list) %> </li>
+    <li> <%= "#{bookmark.movie.title} => #{bookmark.comment}" %>
+      <%= link_to "Delete movie", list_bookmark_path(@list, bookmark),
+        method: :delete,
+        data: { confirm: "Are you sure"}  %> </li>
   <% end %>
 </ul>
+<%= link_to "Add a movie", new_list_bookmark_path(@list) %>
+<br>
+<%= link_to "Back categories", lists_path %>
