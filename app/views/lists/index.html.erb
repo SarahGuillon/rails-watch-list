@@ -1,7 +1,25 @@
-<h1>Movies per Category</h1>
+<<div class="banner d-flex justify-content-between">
+  <h1> Movies per Category </h1>
+  <%= cl_image_tag("p7cb60cjgpxjiw6xizub",
+      width: 200, height: 200, crop: :fill, radius: :max) %>
+</div>
 <ul>
   <% @lists.each do |list| %>
-    <li> <%= link_to list.name, list_path(list) %> </li>
+    <li>
+      <div class="card-category mb-4">
+        <%= cl_image_tag list.photo.key, height: 200, width: 200, crop: :fill %>
+        <div class="card-body">
+          <h5 class="card-title"><%= list.name %></h5>
+          <div class="card-action">
+          <%= link_to "GO", list_path(list), class: "btn btn-primary" %>
+          <%= link_to "x", list_path(list),
+          method: :delete,
+          data: { confirm: "Are you sure"}  ,class: "btn btn-primary"%>
+          </div>
+        </div>
+      </div>
+    </li>
+
   <% end %>
 </ul>
 
